@@ -1,0 +1,480 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* ══════════════════════════════════════════════════════
+   CENTRALIZED DESIGN TOKENS (نظام المتغيرات المركزي)
+   Dark Mode by default, Light Mode when html has .light
+══════════════════════════════════════════════════════ */
+:root {
+  color-scheme: dark;
+
+  /* Primary & Page Backgrounds */
+  --bg-primary: #020617;
+  --bg-secondary: #0b1120;
+  --bg-subtle: rgba(255, 255, 255, 0.03);
+  --bg-radial: radial-gradient(circle at center, #0f172a 0%, #020617 70%, #000000 100%);
+  --bg-hero-glow: rgba(168, 85, 247, 0.15);
+
+  /* Cards & Elevated Surfaces */
+  --surface-card: rgba(15, 23, 42, 0.72);
+  --surface-card-hover: rgba(15, 23, 42, 0.9);
+  --surface-elevated: #1e293b;
+  --surface-subtle: rgba(255, 255, 255, 0.04);
+  --surface-subtle-hover: rgba(255, 255, 255, 0.08);
+
+  /* Comment Area & Bubbles */
+  --comment-section-bg: rgba(2, 6, 23, 0.55);
+  --comment-bubble-bg: rgba(255, 255, 255, 0.05);
+  --comment-bubble-hover: rgba(255, 255, 255, 0.08);
+
+  /* Typography */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-faint: #64748b;
+  --text-inverted: #0f172a;
+
+  /* Brand Accents (Vibrant on Dark) */
+  --brand-primary: #a855f7;
+  --brand-primary-hover: #9333ea;
+  --brand-secondary: #ec4899;
+  --brand-indigo: #818cf8;
+  --brand-cyan: #22d3ee;
+  --brand-emerald: #34d399;
+  --brand-rose: #fb7185;
+
+  /* Accent Badges & Highlights */
+  --accent-purple-bg: rgba(168, 85, 247, 0.12);
+  --accent-purple-border: rgba(168, 85, 247, 0.3);
+  --accent-purple-text: #c084fc;
+  --accent-indigo-bg: rgba(99, 102, 241, 0.12);
+  --accent-indigo-border: rgba(99, 102, 241, 0.3);
+  --accent-indigo-text: #818cf8;
+
+  /* Borders & Dividers */
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(168, 85, 247, 0.4);
+
+  /* Inputs & Form Controls */
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: rgba(255, 255, 255, 0.12);
+  --input-border-focus: rgba(168, 85, 247, 0.6);
+  --input-text: #f8fafc;
+  --input-placeholder: #64748b;
+
+  /* Navbar, Overlays & Popovers */
+  --navbar-bg: rgba(2, 6, 23, 0.85);
+  --navbar-border: rgba(255, 255, 255, 0.1);
+  --popover-bg: rgba(15, 23, 42, 0.95);
+  --popover-border: rgba(255, 255, 255, 0.15);
+  --modal-overlay: rgba(0, 0, 0, 0.7);
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --shadow-card-hover: 0 20px 40px -15px rgba(88, 28, 135, 0.3);
+  --shadow-dropdown: 0 12px 36px rgba(0, 0, 0, 0.6);
+
+  /* Media / Image container */
+  --media-bg: rgba(2, 6, 23, 0.6);
+}
+
+/* ══════════════════════════════════════════════════════
+   LIGHT MODE DESIGN TOKENS (الوضع النهاري الاحترافي)
+   Designed for high contrast, zero murky overlays, WCAG AA
+══════════════════════════════════════════════════════ */
+html.light {
+  color-scheme: light;
+
+  /* Primary & Page Backgrounds */
+  --bg-primary: #f8fafc;        /* Slate 50: clean, soft, modern */
+  --bg-secondary: #f1f5f9;      /* Slate 100 */
+  --bg-subtle: #ffffff;
+  --bg-radial: radial-gradient(circle at center, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%);
+  --bg-hero-glow: rgba(147, 51, 234, 0.08);
+
+  /* Cards & Elevated Surfaces */
+  --surface-card: #ffffff;
+  --surface-card-hover: #ffffff;
+  --surface-elevated: #ffffff;
+  --surface-subtle: #f8fafc;
+  --surface-subtle-hover: #f1f5f9;
+
+  /* Comment Area & Bubbles - Clean and crisp, NO dark overlay */
+  --comment-section-bg: #f8fafc;
+  --comment-bubble-bg: #f1f5f9;
+  --comment-bubble-hover: #e2e8f0;
+
+  /* Typography (WCAG AA Compliant) */
+  --text-primary: #0f172a;      /* Slate 900: 15.8:1 contrast on white */
+  --text-secondary: #334155;    /* Slate 700: 9.3:1 contrast */
+  --text-muted: #64748b;        /* Slate 500: 4.6:1 contrast (meets AA) */
+  --text-faint: #94a3b8;        /* Slate 400 */
+  --text-inverted: #ffffff;
+
+  /* Brand Accents (Vibrant & Deep on Light Backgrounds) */
+  --brand-primary: #7c3aed;     /* Violet 600: rich, legible */
+  --brand-primary-hover: #6d28d9;
+  --brand-secondary: #db2777;   /* Pink 600 */
+  --brand-indigo: #4f46e5;     /* Indigo 600 */
+  --brand-cyan: #0284c7;       /* Sky 600 */
+  --brand-emerald: #059669;    /* Emerald 600 */
+  --brand-rose: #e11d48;       /* Rose 600 */
+
+  /* Accent Badges & Highlights */
+  --accent-purple-bg: rgba(124, 58, 237, 0.08);
+  --accent-purple-border: rgba(124, 58, 237, 0.25);
+  --accent-purple-text: #7c3aed;
+  --accent-indigo-bg: rgba(79, 70, 229, 0.08);
+  --accent-indigo-border: rgba(79, 70, 229, 0.25);
+  --accent-indigo-text: #4f46e5;
+
+  /* Borders & Dividers */
+  --border-color: rgba(15, 23, 42, 0.1);
+  --border-subtle: rgba(15, 23, 42, 0.06);
+  --border-hover: rgba(124, 58, 237, 0.35);
+
+  /* Inputs & Form Controls */
+  --input-bg: #ffffff;
+  --input-border: rgba(15, 23, 42, 0.16);
+  --input-border-focus: rgba(124, 58, 237, 0.5);
+  --input-text: #0f172a;
+  --input-placeholder: #94a3b8;
+
+  /* Navbar, Overlays & Popovers */
+  --navbar-bg: rgba(255, 255, 255, 0.88);
+  --navbar-border: rgba(15, 23, 42, 0.08);
+  --popover-bg: #ffffff;
+  --popover-border: rgba(15, 23, 42, 0.12);
+  --modal-overlay: rgba(15, 23, 42, 0.45);
+
+  /* Shadows */
+  --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover: 0 16px 32px -8px rgba(124, 58, 237, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+  --shadow-dropdown: 0 12px 32px -4px rgba(15, 23, 42, 0.12);
+
+  /* Media / Image container */
+  --media-bg: #f1f5f9;
+}
+
+/* ══════════════════════════════════════════════════════
+   GLOBAL BASE & TYPOGRAPHY
+══════════════════════════════════════════════════════ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Chrome Autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--input-text) !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--input-bg) inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: var(--input-text);
+}
+
+/* ══════════════════════════════════════════════════════
+   SEMANTIC UTILITY CLASSES (مساعدات التصميم)
+══════════════════════════════════════════════════════ */
+.app-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  transition: all 0.25s ease;
+}
+
+.app-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--border-hover);
+}
+
+/* ══════════════════════════════════════════════════════
+   AUTOMATIC TAILWIND CLASS MAPPINGS FOR LIGHT MODE
+   Eliminates all dark murky overlays and hardcoded colors
+══════════════════════════════════════════════════════ */
+html.light {
+  /* Page backgrounds & wrappers */
+  .bg-slate-950,
+  .bg-slate-950\/95,
+  .bg-slate-950\/90,
+  .bg-slate-950\/85,
+  .bg-slate-950\/80,
+  .bg-slate-950\/70 {
+    background-color: var(--bg-primary) !important;
+  }
+
+  /* Card backgrounds */
+  .bg-slate-900,
+  .bg-slate-900\/95,
+  .bg-slate-900\/90,
+  .bg-slate-900\/80,
+  .bg-slate-900\/70,
+  .bg-slate-900\/60,
+  article.bg-slate-900\/60 {
+    background-color: var(--surface-card) !important;
+    box-shadow: var(--shadow-card) !important;
+  }
+
+  /* Card hover states */
+  .hover\:shadow-purple-950\/20:hover,
+  .hover\:shadow-purple-950\/40:hover,
+  .hover\:shadow-indigo-950\/40:hover,
+  .hover\:shadow-indigo-950\/50:hover {
+    box-shadow: var(--shadow-card-hover) !important;
+  }
+
+  /* CRITICAL: Overlays on posts and comments that caused dark grey mud */
+  .bg-slate-950\/40,
+  .bg-slate-950\/50,
+  .bg-slate-950\/30 {
+    background-color: var(--comment-section-bg) !important;
+  }
+
+  /* Image wrappers */
+  .bg-slate-950\/60 {
+    background-color: var(--media-bg) !important;
+  }
+
+  /* Section backgrounds in About, Contact, Policy */
+  .bg-slate-900\/40,
+  .bg-slate-900\/30,
+  .bg-slate-900\/20 {
+    background-color: var(--bg-secondary) !important;
+  }
+
+  /* Radial page background in Login, Register, 404 */
+  .bg-radial {
+    background: var(--bg-radial) !important;
+  }
+
+  /* Navbar background */
+  nav.bg-slate-950\/85,
+  nav.bg-slate-950\/90,
+  nav .bg-slate-950\/85 {
+    background-color: var(--navbar-bg) !important;
+    border-color: var(--navbar-border) !important;
+  }
+
+  /* Mobile menu dropdown & popovers */
+  .bg-slate-900\/95,
+  .bg-slate-900\/90 {
+    background-color: var(--popover-bg) !important;
+    border-color: var(--popover-border) !important;
+  }
+
+  /* Subtly tinted transparent backgrounds */
+  .bg-white\/2,
+  .bg-white\/3,
+  .bg-white\/4 {
+    background-color: var(--surface-subtle) !important;
+  }
+
+  .bg-white\/5,
+  .bg-white\/6,
+  .bg-white\/7,
+  .bg-white\/8 {
+    background-color: var(--comment-bubble-bg) !important;
+  }
+
+  .hover\:bg-white\/5:hover,
+  .hover\:bg-white\/6:hover,
+  .hover\:bg-white\/7:hover,
+  .hover\:bg-white\/8:hover,
+  .hover\:bg-white\/10:hover {
+    background-color: var(--surface-subtle-hover) !important;
+  }
+
+  /* Borders */
+  .border-white\/5,
+  .border-white\/6,
+  .border-white\/8,
+  .border-white\/10,
+  .border-white\/15,
+  .border-white\/20 {
+    border-color: var(--border-color) !important;
+  }
+
+  /* Typography mappings for pristine contrast */
+  .text-white:not(button.bg-linear-to-r):not(button.bg-linear-to-r *):not(a.bg-linear-to-r):not(a.bg-linear-to-r *):not(.bg-linear-to-tr *):not(.theme-toggle-knob *):not(.badge-white):not([data-keep-white]) {
+    color: var(--text-primary) !important;
+  }
+
+  .text-slate-100,
+  .text-slate-200 {
+    color: var(--text-secondary) !important;
+  }
+
+  .text-slate-300 {
+    color: var(--text-secondary) !important;
+  }
+
+  .text-slate-400 {
+    color: var(--text-muted) !important;
+  }
+
+  /* Text accents on light mode (prevent washed out pale colors) */
+  .text-purple-300,
+  .text-purple-400 {
+    color: var(--brand-primary) !important;
+  }
+
+  .text-indigo-300,
+  .text-indigo-400 {
+    color: var(--brand-indigo) !important;
+  }
+
+  .text-cyan-300,
+  .text-cyan-400 {
+    color: var(--brand-cyan) !important;
+  }
+
+  .text-pink-300,
+  .text-pink-400 {
+    color: var(--brand-secondary) !important;
+  }
+
+  /* Accent badge containers on light mode */
+  .bg-purple-500\/10,
+  .bg-purple-500\/15 {
+    background-color: var(--accent-purple-bg) !important;
+  }
+  .border-purple-500\/20,
+  .border-purple-500\/30 {
+    border-color: var(--accent-purple-border) !important;
+  }
+
+  .bg-indigo-500\/10,
+  .bg-indigo-500\/15 {
+    background-color: var(--accent-indigo-bg) !important;
+  }
+  .border-indigo-500\/20,
+  .border-indigo-500\/30 {
+    border-color: var(--accent-indigo-border) !important;
+  }
+
+  /* Form Inputs in Light Mode */
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  textarea,
+  select {
+    background-color: var(--input-bg) !important;
+    color: var(--input-text) !important;
+    border-color: var(--input-border) !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--input-placeholder) !important;
+  }
+
+  /* Fix invisible gradient stat numbers in About.tsx */
+  .from-white.to-slate-300 {
+    --tw-gradient-from: #4338ca !important;
+    --tw-gradient-to: #7e22ce !important;
+  }
+
+  /* Retain white text for solid gradient buttons */
+  button.bg-linear-to-r,
+  a.bg-linear-to-r,
+  button.bg-gradient-to-r,
+  a.bg-gradient-to-r,
+  button[class*="from-indigo-"],
+  a[class*="from-indigo-"] {
+    color: #ffffff !important;
+  }
+
+  button.bg-linear-to-r *,
+  a.bg-linear-to-r *,
+  button.bg-gradient-to-r *,
+  a.bg-gradient-to-r * {
+    color: #ffffff !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   HOME PRODUCTS GRID COMPATIBILITY
+══════════════════════════════════════════════════════ */
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.col-md-2 {
+  width: 100%;
+}
+
+.item {
+  background: var(--surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+}
+
+.item:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--media-bg);
+}
+
+.item > div {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.item h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.item p {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
